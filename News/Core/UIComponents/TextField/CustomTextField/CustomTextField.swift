@@ -1,0 +1,86 @@
+//
+//  CustomTextField.swift
+//  News
+//
+//  Created by BTS.id on 02/03/26.
+//
+
+import UIKit
+import Foundation
+
+class CustomTextField: UIView {
+    // MARK: - Outlets
+    @IBOutlet weak var textField: PaddedTextField!
+    
+    // MARK: - Variables
+    var placeholder: String = "Enter" {
+        didSet {
+            textField.placeholder = placeholder
+        }
+    }
+    var readOnly: Bool = false
+    var delegate: UITextFieldDelegate? {
+        didSet {
+            textField.delegate = delegate
+        }
+    }
+    var keyboardType: UIKeyboardType? {
+        didSet {
+            guard let type = keyboardType else {return}
+            
+            textField.keyboardType = type
+        }
+    }
+    var textContentType: UITextContentType? {
+        didSet {
+            guard let type = textContentType else {return}
+            
+            textField.textContentType = type
+        }
+    }
+    var onChanged: ((Any) -> Void)?
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        self.configureView()
+    }
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        self.configureView()
+    }
+    
+    private func configureView() {
+        guard let view = loadFromNibWithOwner(nibName: "CustomTextField") else {return}
+        view.frame = self.bounds
+        self.addSubview(view)
+        
+        setupTextFieldStyle()
+    }
+    
+    private func setupTextFieldStyle() {
+        textField.delegate = self
+        
+        // MARK: - Setup Placeholder Style
+        setupPlaceholderStyle()
+    }
+    
+    private func setupPlaceholderStyle() {
+        textField.attributedPlaceholder = NSAttributedString(string: placeholder, attributes: nil)
+    }
+    
+    func setSuffix(_ image: UIImage, target: Any?, action: Selector?) {
+        textField.padding.right += 10
+        textField.setSuffix(image, target: target, action: action)
+    }
+    
+    @IBAction func onChangedTextField(_ sender: Any) {
+        self.onChanged?(sender)
+    }
+}
+
+extension CustomTextField: UITextFieldDelegate {
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        return !readOnly
+    }
+}

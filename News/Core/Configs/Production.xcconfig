@@ -1,0 +1,29 @@
+//
+//  Production.xcconfig
+//  News
+//
+//  Created by BTS.id on 02/03/26.
+//
+
+#include "Base.xcconfig"
+
+// Server URL
+SCHEME = https
+HOST = newsapi.org
+API_KEY = c2379af74b444b68b7289a0a62895f94
+
+// Backward Compatible Values
+ENV_NAME = production
+
+// Overriding (do NOT change key name)
+// app name
+PRODUCT_NAME = $(APP_NAME)
+
+// bundle id
+PRODUCT_BUNDLE_IDENTIFIER = $(BASE_BUNDLE_IDENTIFIER)
+
+// app version
+MARKETING_VERSION = 1.0.0
+
+// build number
+CURRENT_PROJECT_VERSION = 1

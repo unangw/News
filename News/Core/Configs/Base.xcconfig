@@ -1,0 +1,9 @@
+//
+//  Base.xcconfig
+//  News
+//
+//  Created by BTS.id on 02/03/26.
+//
+
+APP_NAME = News
+BASE_BUNDLE_IDENTIFIER = com.btsid.news
