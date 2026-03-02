@@ -35,7 +35,7 @@ extension UIImageView {
         
         let options: KingfisherOptionsInfo = [
             .processor(processor),
-            .scaleFactor(UIScreen.main.scale),
+            .scaleFactor(self.traitCollection.displayScale),
             .transition(.fade(1)),
             .cacheOriginalImage,
             .requestModifier(modifier)
