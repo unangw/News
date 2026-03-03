@@ -10,8 +10,10 @@ import UIKit
 class ArticleItemCell: UICollectionViewCell {
     // MARK: - Outlets
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var publishedAtLabel: UILabel!
+    @IBOutlet weak var authorLabel: UILabel!
     
     // MARK: - Variables
     static let identifier = "ArticleItemCell"
@@ -27,7 +29,9 @@ class ArticleItemCell: UICollectionViewCell {
         imageView.setImage(with: article.urlToImage)
         
         titleLabel.text = article.title ?? "-"
+        descriptionLabel.text = article.description ?? "-"
         
+        authorLabel.text = article.author ?? "-"
         publishedAtLabel.text = article.publishedAt?.toDisplayedDate() ?? "-"
     }
     

@@ -12,17 +12,17 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="4mk-3g-Y4k" customClass="ArticleItemCell" customModule="News" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="360" height="97"/>
-            <autoresizingMask key="autoresizingMask"/>
+            <rect key="frame" x="0.0" y="0.0" width="360" height="200"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="eJR-Ks-hp7">
-                <rect key="frame" x="0.0" y="0.0" width="360" height="97"/>
+                <rect key="frame" x="0.0" y="0.0" width="360" height="200"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QvL-zB-sUP">
-                        <rect key="frame" x="0.0" y="0.0" width="360" height="97"/>
+                        <rect key="frame" x="0.0" y="0.0" width="360" height="200"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="97" id="rPa-uf-vAQ"/>
+                            <constraint firstAttribute="height" constant="200" id="rPa-uf-vAQ"/>
                         </constraints>
                     </view>
                 </subviews>
