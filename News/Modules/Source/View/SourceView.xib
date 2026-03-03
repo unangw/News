@@ -10,7 +10,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SourceViewController" customModule="News" customModuleProvider="target">
             <connections>
-                <outlet property="collectionView" destination="tec-hq-OlG" id="81H-TK-qg9"/>
+                <outlet property="collectionView" destination="G8s-oA-gSG" id="der-7K-8T1"/>
+                <outlet property="searchTextField" destination="1RU-49-njs" id="LF6-gp-5s7"/>
                 <outlet property="view" destination="1bQ-ac-h5G" id="kA8-WI-Ggx"/>
             </connections>
         </placeholder>
@@ -19,24 +20,45 @@
             <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="tec-hq-OlG">
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="FaY-9h-Na8">
                     <rect key="frame" x="0.0" y="118" width="393" height="666"/>
-                    <color key="backgroundColor" red="0.96470588235294119" green="0.96470588235294119" blue="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="KAb-K3-I3v">
-                        <size key="itemSize" width="128" height="128"/>
-                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                    </collectionViewFlowLayout>
-                </collectionView>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UCC-ei-je0">
+                            <rect key="frame" x="0.0" y="0.0" width="393" height="40"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1RU-49-njs" customClass="CustomTextField" customModule="News" customModuleProvider="target">
+                                    <rect key="frame" x="20" y="0.0" width="353" height="40"/>
+                                </view>
+                            </subviews>
+                            <constraints>
+                                <constraint firstItem="1RU-49-njs" firstAttribute="top" secondItem="UCC-ei-je0" secondAttribute="top" id="63W-NG-jpM"/>
+                                <constraint firstItem="1RU-49-njs" firstAttribute="leading" secondItem="UCC-ei-je0" secondAttribute="leading" constant="20" id="QQR-i9-z2X"/>
+                                <constraint firstAttribute="trailing" secondItem="1RU-49-njs" secondAttribute="trailing" constant="20" id="X8E-aT-ARv"/>
+                                <constraint firstAttribute="height" constant="40" id="cLP-7r-35H"/>
+                                <constraint firstAttribute="bottom" secondItem="1RU-49-njs" secondAttribute="bottom" id="ogx-AV-HM5"/>
+                            </constraints>
+                        </view>
+                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="G8s-oA-gSG">
+                            <rect key="frame" x="0.0" y="60" width="393" height="606"/>
+                            <color key="backgroundColor" red="0.96470588239999999" green="0.96470588239999999" blue="0.96470588239999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="XaC-pg-JNi">
+                                <size key="itemSize" width="128" height="128"/>
+                                <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            </collectionViewFlowLayout>
+                        </collectionView>
+                    </subviews>
+                    <viewLayoutGuide key="safeArea" id="fd7-DR-3cc"/>
+                </stackView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="Cxi-QH-t75"/>
             <color key="backgroundColor" red="0.96470588235294119" green="0.96470588235294119" blue="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
             <constraints>
-                <constraint firstItem="tec-hq-OlG" firstAttribute="leading" secondItem="Cxi-QH-t75" secondAttribute="leading" id="Wp5-UT-QNX"/>
-                <constraint firstItem="Cxi-QH-t75" firstAttribute="bottom" secondItem="tec-hq-OlG" secondAttribute="bottom" id="kTt-SB-M4u"/>
-                <constraint firstItem="tec-hq-OlG" firstAttribute="top" secondItem="Cxi-QH-t75" secondAttribute="top" id="qMK-wV-6Au"/>
-                <constraint firstItem="tec-hq-OlG" firstAttribute="trailing" secondItem="Cxi-QH-t75" secondAttribute="trailing" id="qTZ-Ec-xl6"/>
+                <constraint firstItem="FaY-9h-Na8" firstAttribute="top" secondItem="Cxi-QH-t75" secondAttribute="top" id="hGK-BX-4Md"/>
+                <constraint firstItem="FaY-9h-Na8" firstAttribute="bottom" secondItem="Cxi-QH-t75" secondAttribute="bottom" id="hJU-an-ctT"/>
+                <constraint firstItem="FaY-9h-Na8" firstAttribute="trailing" secondItem="Cxi-QH-t75" secondAttribute="trailing" id="lgd-ZC-fU3"/>
+                <constraint firstItem="FaY-9h-Na8" firstAttribute="leading" secondItem="Cxi-QH-t75" secondAttribute="leading" id="vcb-TI-rZQ"/>
             </constraints>
             <point key="canvasLocation" x="17.557251908396946" y="-11.267605633802818"/>
         </view>

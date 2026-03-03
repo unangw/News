@@ -8,9 +8,11 @@
 import UIKit
 import SkeletonView
 import RxSwift
+import RxCocoa
 
 class SourceViewController: BaseViewController {
     // MARK: - Outlets
+    @IBOutlet weak var searchTextField: CustomTextField!
     @IBOutlet weak var collectionView: UICollectionView!
     
     // MARK: - Variables
@@ -60,6 +62,9 @@ class SourceViewController: BaseViewController {
         
         // MARK: - Setup Collection View
         setupCollectionView()
+        
+        // MARK: - Sestup Search TextField
+        setupSearchTextField()
     }
     
     private func setupNavigation() {
@@ -93,6 +98,16 @@ class SourceViewController: BaseViewController {
         collectionView.addSubview(refreshControl)
         
         refreshControl.addTarget(self, action: #selector(refreshData), for: .valueChanged)
+    }
+    
+    private func setupSearchTextField() {
+        // MARK: - Setup Search TextField
+        searchTextField.placeholder = "Search source here... (static)"
+        
+        searchTextField.setSuffix(.icClose, target: self, action: #selector(clearSearch))
+        searchTextField.textField.rightViewMode = .never // Hide suffix icon
+        
+        setupSearchBinding()
     }
     
     private func setupNoData() {
@@ -147,6 +162,31 @@ class SourceViewController: BaseViewController {
     
     private func onTapSourceItem(source: SourceItemModel?) {
         didSendEventClosure?(.article(source: source))
+    }
+    
+    private func setupSearchBinding() {
+        let searchText = searchTextField.textField.rx.controlEvent(.editingChanged)
+            .withLatestFrom(searchTextField.textField.rx.text.orEmpty)
+            .share(replay: 1)
+        
+        searchText
+            .map { $0.isEmpty ? UITextField.ViewMode.never : .always }
+            .bind(to: searchTextField.textField.rx.rightViewMode)
+            .disposed(by: disposeBag)
+
+        searchText
+            .debounce(.milliseconds(1000), scheduler: MainScheduler.instance)
+            .distinctUntilChanged()
+            .subscribe(onNext: { [weak self] query in
+                self?.viewModel?.staticSearch(query: query)
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    @objc private func clearSearch() {
+        searchTextField.textField.text = nil
+        
+        viewModel?.staticSearch(query: searchTextField.textField.text)
     }
 }
 
