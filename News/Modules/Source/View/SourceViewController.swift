@@ -83,10 +83,8 @@ class SourceViewController: BaseViewController {
         customFlowLayout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
         customFlowLayout.minimumLineSpacing = 16
         customFlowLayout.minimumInteritemSpacing = 16
-        customFlowLayout.sectionInset.top = 24
         customFlowLayout.sectionInset.left = 20
         customFlowLayout.sectionInset.right = 20
-        customFlowLayout.sectionInset.bottom = 20
         collectionView.collectionViewLayout = customFlowLayout
         collectionView.contentInsetAdjustmentBehavior = .always
         collectionView.alwaysBounceVertical = true
