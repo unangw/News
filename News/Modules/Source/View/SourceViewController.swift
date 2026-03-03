@@ -102,7 +102,7 @@ class SourceViewController: BaseViewController {
     
     private func setupSearchTextField() {
         // MARK: - Setup Search TextField
-        searchTextField.placeholder = "Search source here... (static)"
+        searchTextField.placeholder = "Search source here..."
         
         searchTextField.setSuffix(.icClose, target: self, action: #selector(clearSearch))
         searchTextField.textField.rightViewMode = .never // Hide suffix icon
@@ -227,7 +227,9 @@ extension SourceViewController: UICollectionViewDataSource, UICollectionViewDele
     
     // Part of UICollectionViewDelegate
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        onTapSourceItem(source: viewModel?.sources[indexPath.item])
+        if indexPath.item < (viewModel?.sources.count ?? 0) {
+            onTapSourceItem(source: viewModel?.sources[indexPath.item])
+        }
     }
 }
 
