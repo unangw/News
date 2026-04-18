@@ -16,10 +16,13 @@ extension UIViewController {
             let customView = UIView()
             customView.translatesAutoresizingMaskIntoConstraints = false
             customView.backgroundColor = .clear
+            customView.isAccessibilityElement = true
+            customView.accessibilityIdentifier = "nav_back_button"
             
             let imageView = UIImageView()
             imageView.translatesAutoresizingMaskIntoConstraints = false
             imageView.image = .icArrowLeft
+            imageView.isAccessibilityElement = false
             
             customView.addSubview(imageView)
             
